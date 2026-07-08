@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>L'Artisan Café | Crafted with Intent</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#313030",
+                    "inverse-primary": "#e3beb8",
+                    "on-tertiary-fixed": "#1b1d0e",
+                    "on-tertiary-fixed-variant": "#474836",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-secondary-container": "#6b6360",
+                    "on-primary-fixed-variant": "#5b403c",
+                    "surface-dim": "#dcd9d9",
+                    "surface-container-high": "#ebe7e7",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#e3beb8",
+                    "on-background": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#ece0dc",
+                    "on-tertiary-container": "#959680",
+                    "on-surface": "#1c1b1b",
+                    "on-primary-container": "#ae8d87",
+                    "primary-fixed": "#ffdad4",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container": "#f0edec",
+                    "surface-tint": "#745853",
+                    "primary": "#271310",
+                    "outline": "#827472",
+                    "tertiary-container": "#2c2e1e",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "on-secondary-fixed-variant": "#4c4542",
+                    "primary-container": "#3e2723",
+                    "on-surface-variant": "#504442",
+                    "tertiary": "#18190b",
+                    "surface-bright": "#fcf9f8",
+                    "outline-variant": "#d3c3c0",
+                    "background": "#fcf9f8",
+                    "tertiary-fixed-dim": "#c8c8b0",
+                    "surface": "#fcf9f8",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed": "#2b1613",
+                    "secondary": "#655d5a",
+                    "tertiary-fixed": "#e4e4cc",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#cfc4c0",
+                    "on-secondary-fixed": "#201a18",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#ece0dc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter-mobile": "16px",
+                    "container-max": "1280px",
+                    "section-padding": "120px",
+                    "unit": "8px",
+                    "gutter-desktop": "32px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["EB Garamond"],
+                    "headline-sm": ["EB Garamond"],
+                    "body-md": ["Hanken Grotesk"],
+                    "display-lg": ["EB Garamond"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass {
+            background: rgba(252, 249, 248, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .origin-stamp {
+            border: 1px solid currentColor;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            padding: 12px;
+            text-align: center;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Shell -->
+<header class="sticky top-0 w-full z-50 glass border-b border-white/20 h-20 transition-all duration-300">
+<nav class="flex justify-between items-center px-gutter-mobile md:px-gutter-desktop max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-2 cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl transition-transform group-hover:scale-110">coffee</span>
+<span class="font-display-lg text-headline-md text-primary italic">L'Artisan Café</span>
+</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#about">Our Story</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#menu">Menu</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#why-us">Experience</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#contact">Contact</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="hidden lg:block text-primary font-bold border-b border-primary hover:opacity-70 transition-opacity cursor-pointer">Brew Now</button>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="md:hidden material-symbols-outlined text-on-surface" id="menu-toggle">menu</button>
+</div>
+</nav>
+<div class="md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out glass border-t border-white/20" id="mobile-menu">
+<div class="flex flex-col items-center gap-6 py-8 px-gutter-mobile">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#about">Our Story</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#menu">Menu</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#why-us">Experience</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#contact">Contact</a>
+<button class="text-primary font-bold border-b border-primary hover:opacity-70 transition-opacity cursor-pointer">Brew Now</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Atmospheric coffee shop interior" class="w-full h-full object-cover brightness-75 scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTfIRVQpwBbdsrsPH7F4xfu5bdhVER6VF7bDubqENhV03KYYGEhuM7XCIY5DqUE-0zeAHEowaRNvHOLOET2uzDWcoaF7t-qzeyy9vbkL-3KLISXMcGLBay6-2iBoiQZSWcU4sIt9J5Y5XdMsmeSn9BwPBDfYKFR-3quPs6GifkF4z5jkNmankH2WQvBxCttIS3-FmC7pUqz8hdf8B90OAo-5ZfK0fT1b0yclBMZIVFhuK5vvtgwrupo75odXKtPsahviYBBZRBci4"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-background/80"></div>
+</div>
+<div class="relative z-10 text-center px-gutter-mobile max-w-4xl">
+<span class="font-label-caps text-label-caps text-white mb-6 block tracking-widest uppercase reveal">Est. 2024 • Artisanal Excellence</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 reveal">Crafted Coffee, Made With Passion</h1>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6 reveal">
+<a class="bg-primary text-on-primary px-10 py-4 rounded-full font-body-md font-semibold hover:opacity-90 transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/10" href="#menu">View Menu</a>
+<a class="border border-white text-white px-10 py-4 rounded-full font-body-md font-semibold hover:bg-white/10 backdrop-blur-sm transition-all transform hover:-translate-y-1" href="#contact">Reserve a Table</a>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-16 md:py-24 lg:py-section-padding bg-surface-container-lowest" id="about">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<div class="lg:col-span-5 reveal">
+<span class="font-label-caps text-label-caps text-on-primary-container mb-4 block uppercase tracking-widest">Our Heritage</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-8 leading-tight">Quiet Luxury, Intentional Roasting.</h2>
+<p class="text-body-lg text-on-surface-variant mb-6">At L'Artisan Café, we believe that coffee is more than just a morning ritual; it's a sensory journey. Our space is designed to be an oasis of calm, where every bean is sourced with ethics and roasted with surgical precision.</p>
+<p class="text-body-lg text-on-surface-variant mb-10 italic">"We don't serve coffee; we curate moments of silence in a loud world."</p>
+<div class="origin-stamp text-primary">
+<span class="font-label-caps text-[10px] leading-tight">ORIGIN<br/>GUARANTEE</span>
+</div>
+</div>
+<div class="lg:col-span-7 reveal">
+<div class="relative aspect-video rounded-2xl overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A macro shot of a barista performing a precise pour-over coffee in a high-end minimalist kitchen setting. Warm morning light streams through a window, highlighting the steam rising from the ceramic vessel. The background is softly blurred with tones of warm wood and cream marble, creating a sophisticated and peaceful atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjIopn5amUfNnRYAEtAMj9sWWLfNck9nOKZyYBSXjSNRf1mFM4_9l2raJM8OfC00FRUG1tb6Ng_6WcVIhOO4y576wEZsHE0FKt8EVIIN5uYUZaZ4kRBwFk2ipQGQHbO0ft9hh6bO7UwvGBEn3AO-sS_UTpnZwBA4CZiKDcHE25X8IblYCRCl3hP7_W7rpRY9D7eafbw5-T5Sqw4y2z1PsEO3Q3T_fXpskcXIXYXT8u9LHdNsz64pvi-upzY3p1dEmxp3CiKLWH-pk"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Menu -->
+<section class="py-16 md:py-24 lg:py-section-padding bg-background overflow-hidden" id="menu">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal">
+<div class="max-w-xl">
+<span class="font-label-caps text-label-caps text-on-primary-container mb-4 block uppercase tracking-widest">The Daily Curations</span>
+<h2 class="font-headline-md text-headline-md text-primary">A Symphony of Flavors</h2>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+<!-- Coffee Card 1 -->
+<div class="reveal group">
+<div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-surface-container">
+<img alt="Specialty Latte" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7yivpYWCdMtOI_W203kvB7QgAFkkc_QimUHX_ny1Oeg2x2mSBGEofm3Z5FBY6eapB0v5in6O5jaWqyapcJNup_NMA2J5BsV47oqJtsaS8P7JcsMn7e55-IsK4YbJeLLA0s1_zi8dsPF8zpbE--198d6Rkq98rZ7WnTijOMB8Tk6RDYAsEuYJWzcV0IPLLmLsrc0XLU6cNvSz4Ps6p63ZQYpI74D9w7xbI8juCOS8Wgm1h9ALx2vzbg8gfVfQTUbW3uBzUJjWEM4I"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Velvet Espresso</h3>
+<span class="text-body-lg text-primary font-bold">$4</span>
+</div>
+<p class="text-on-surface-variant font-body-md mb-4">Double-shot extraction with notes of dark chocolate and orange zest.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-fixed text-xs rounded-full font-semibold uppercase tracking-wider">Ethiopia</span>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-xs rounded-full font-semibold uppercase tracking-wider">Medium Roast</span>
+</div>
+</div>
+<!-- Coffee Card 2 -->
+<div class="reveal group" style="transition-delay: 100ms;">
+<div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-surface-container">
+<img alt="Artisan Croissants" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKVc025Vky5PDphSM-dmN9Fp13Sxmb8KFQnUu-5WSLq17Oi9tzi-YDJrpiTmsMljurKjysOdWuB2QJfI0kx8_PMudEHRWydakZBFLxXrlyPuAKv4YV4j-pt5zB14IP1GZ583n4qMGDIfml-QROKwefJKG5vUm2ss7246Ns2xrr5aDRiwDsGilbTLFkxzTmdXMmnNDSsU2DnjrrN4_GHMhTJJFf_UGvTHIfeWqWhPkcqi-8PIJBQUD6M8UoYkSUHJr6oP2b_odZtC8"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Burnt Basque Cheesecake</h3>
+<span class="text-body-lg text-primary font-bold">$8</span>
+</div>
+<p class="text-on-surface-variant font-body-md mb-4">Caramelized exterior with a silky, molten heart. Baked fresh every morning.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-fixed text-xs rounded-full font-semibold uppercase tracking-wider">Signature</span>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-xs rounded-full font-semibold uppercase tracking-wider">Award Winning</span>
+</div>
+</div>
+<!-- Coffee Card 3 -->
+<div class="reveal group" style="transition-delay: 200ms;">
+<div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-surface-container relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A beautiful, minimalist latte art piece in a handmade ceramic cup. The design features a delicate swan shape in the foam against the deep rich brown of the espresso. The cup sits on a light oak table with a single coffee bean resting beside it. The lighting is soft, diffused, and evokes a luxury cafe atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxytTDxeSLQ0pheWZLYLX_1Axql-5vuLfpVEpxJDc1DRskj6Agcrg6VoyfPiZ2rAS60WO8PdkyBZX4rcX7y62_2U8uJ8M5yAun_amtx4-dd1DwIbp-X2rjwu2ZE-vIS7uEvsqHTSYorPCPq0gEam436mYdL8p1cNQae31togPJ9ZesD5rUGnOkVmwp8XOwoIKLqaLXsa6-j8giIWBu-JXJ6gHNwtSJg9uILI3pcqMjBV2NXkFqLYOXm03Km_LlLu_FsFjsDL2rPfE"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Golden Oat Latte</h3>
+<span class="text-body-lg text-primary font-bold">$5</span>
+</div>
+<p class="text-on-surface-variant font-body-md mb-4">Crafted with small-batch oat milk and a hint of organic vanilla bean.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-fixed text-xs rounded-full font-semibold uppercase tracking-wider">Vegan</span>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-xs rounded-full font-semibold uppercase tracking-wider">House Blend</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us - Bento Style -->
+<section class="py-16 md:py-24 lg:py-section-padding bg-surface-container-lowest" id="why-us">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 reveal">
+<div class="md:col-span-2 md:row-span-2 glass p-10 rounded-2xl flex flex-col justify-end min-h-[280px] sm:min-h-[400px] border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-5xl mb-6">eco</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Premium Ethically Sourced Beans</h3>
+<p class="text-on-surface-variant">We partner directly with farmers in Rwanda and Colombia to ensure quality and fair wages, roasting every batch in-house to peak perfection.</p>
+</div>
+<div class="bg-primary-container text-on-primary-fixed p-10 rounded-2xl border border-primary">
+<span class="material-symbols-outlined text-on-primary text-4xl mb-6">bakery_dining</span>
+<h3 class="font-body-lg font-bold mb-2">Fresh Daily Bakery</h3>
+<p class="text-on-primary-container text-sm">Flaky, buttery pastries handmade by our resident pâtissier each dawn.</p>
+</div>
+<div class="glass p-10 rounded-2xl border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">weekend</span>
+<h3 class="font-body-lg font-bold mb-2">Cozy Atmosphere</h3>
+<p class="text-on-surface-variant text-sm">A minimalist space designed for focus, deep conversation, and peaceful repose.</p>
+</div>
+<div class="md:col-span-2 bg-surface-container p-10 rounded-2xl flex items-center gap-8 border border-outline-variant">
+<div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-3xl">wifi</span>
+</div>
+<div>
+<h3 class="font-body-lg font-bold mb-2">Seamless Connectivity</h3>
+<p class="text-on-surface-variant text-sm">High-speed fiber Wi-Fi for our nomadic guests who create magic while they sip.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery -->
+<section class="py-16 md:py-24 lg:py-section-padding bg-background">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16 reveal">
+<h2 class="font-headline-md text-headline-md text-primary">Through the Lens</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+<div class="col-span-2 row-span-2 rounded-2xl overflow-hidden h-[280px] sm:h-[400px] md:h-[600px]">
+<img alt="Interior Details" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYkZdLmazAEv8cXMyxMkhHwXntBHlapx5jNVwDT1d8mb-zs-7WuTOACDLeTsQV39SEoumDNqjGhqPvMtvswERFqz6v4ggFOknXHa_C4pgjtWyLk0VZ8I7PYCX5L559gTxg91687Qu2ZyukFcPbXmx_SYDpgN3pf-SAc3TI0AGulMhC6xrBwHhEO0byAdkXaRzU47F12Ic0Bz4zgiJXv7rDNiwzfXVipLktU0g9J0vMMe2jsiF3T0tIsAY1sD5ErvTDmaop_q8E9qY"/>
+</div>
+<div class="rounded-2xl overflow-hidden h-[140px] sm:h-[190px] md:h-[290px]">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="A close-up shot of an artisan barista's hands as they carefully pour steamed milk into a ceramic cup, creating intricate latte art. The setting is clean and high-end, with a warm color palette of beige and deep coffee browns. The lighting is soft and focused on the center of the action, emphasizing the craftsmanship and attention to detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdhg5X_WQprd1cb2EYXv8N66ZNxhGOTsYrt0B6Y5PEwS1zctxLuXhlneZQ3DgZZX9EgheYZ4ltxqAeF0ITcxTB4MhMcppi0PMdrB6vbbk6eCD-O2GOrwFbUXTilIaO0ksCcKt1B3FVbF3ePvtiJRbRauk0geRCdIBdazEQNY1w5haNpRNFLnQ7P7GO3d72OblzTXZxiHG4wfd6ah7TSQ8Ox8mWoygSp5yNYPnsRclV1TId8h_KYPVZbiw9q2wzz8ZpNDUKtpmmogw"/>
+</div>
+<div class="rounded-2xl overflow-hidden h-[140px] sm:h-[190px] md:h-[290px]">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="A beautifully arranged shelf in a minimalist coffee shop, featuring sleek glass containers of roasted coffee beans, high-end brewing equipment like a Chemex and a precision scale, and a single green plant for a touch of life. The lighting is soft and bright, highlighting the clean lines and premium aesthetic of the artisan space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUgCOhIJ4lMrUKNTNdj2kQoF8cj0eXA4XBYhWsyEUKBsdgNyK6LKD-BI_ffc8jv5GxRhQlS0ci34PVygLNqghnop7LPC72MrikfDSR8NlRPhYDtbzYKKeMVhezISoWVwqdgnwwrTNhGJ9HFNxAKy0MZdO0t8taLSCclz-ZKZ1QI2S-RPt7HL_5JZumOCbv2TI-Mr-Zgw9QFOVDtdEC-2FcV_uzNYa-QKrU1-3jeTAZoXcmueAZYL-qEB7aA7iT3Gq_9dB5GgYY0wQ"/>
+</div>
+<div class="col-span-2 rounded-2xl overflow-hidden h-[140px] sm:h-[190px] md:h-[290px]">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="A wide-angle shot of a serene, minimalist cafe seating area with warm wooden tables and comfortable cream-colored chairs. Large windows allow soft natural light to fill the room, reflecting off the polished marble floors. A few customers are quietly working or reading, embodying a peaceful and focused atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgbA4vtZ3fBKqSuEZ06oTHXFW-bmS_O_Kb_c6C0XMQdpH0JtZE2vTE78INzEKAnwveNqcYVMWtQgD7X0MfIEYhhel0JMpp26CFyiP2TfFTn50_bV1Qzg-0Rb_NM_OKDXCYPr8C35W2-h8Q6OatBd_XTTzuhyM55JKWr7hQV7HJuIs9YIkCfA3ReX7v_YINZWKrjMe1WVexgGpUSvkP53-EAKHbZaT2Fk837vBV9Rd3n-2YjnYNx1fhZki1TZm3tgV8nl5o_DzGzMc"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-16 md:py-24 lg:py-section-padding bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 reveal">
+<div class="bg-white p-10 rounded-2xl shadow-sm border border-outline-variant/30">
+<div class="flex mb-6 text-primary">
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+</div>
+<p class="text-body-lg italic mb-8">"The quietest, most beautiful café I've ever visited. The Mocha is transcendent."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10"></div>
+<div>
+<p class="font-bold text-primary">Sophie L.</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest">Local Guide</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-10 rounded-2xl shadow-sm border border-outline-variant/30">
+<div class="flex mb-6 text-primary">
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+</div>
+<p class="text-body-lg italic mb-8">"Their Basque cheesecake is legendary. Pairs perfectly with the house blend espresso."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10"></div>
+<div>
+<p class="font-bold text-primary">Marc D.</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest">Food Critic</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-10 rounded-2xl shadow-sm border border-outline-variant/30">
+<div class="flex mb-6 text-primary">
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+<span class="material-symbols-outlined fill text-sm">star</span>
+</div>
+<p class="text-body-lg italic mb-8">"A true masterclass in minimalist design and artisan service. My daily sanctuary."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10"></div>
+<div>
+<p class="font-bold text-primary">Elena R.</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest">Architect</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact & Location -->
+<section class="py-16 md:py-24 lg:py-section-padding bg-background" id="contact">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+<div class="reveal">
+<h2 class="font-headline-md text-headline-md text-primary mb-8">Visit Our Sanctuary</h2>
+<div class="space-y-8">
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+<div>
+<h4 class="font-bold text-lg mb-1">Our Address</h4>
+<p class="text-on-surface-variant">128 Artisan Lane, Creative District<br/>New York, NY 10012</p>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">schedule</span>
+<div>
+<h4 class="font-bold text-lg mb-1">Opening Hours</h4>
+<div class="grid grid-cols-2 gap-x-12 gap-y-1 text-on-surface-variant">
+<span>Mon - Fri:</span> <span>7am - 8pm</span>
+<span>Sat - Sun:</span> <span>8am - 9pm</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">contact_support</span>
+<div>
+<h4 class="font-bold text-lg mb-1">Say Hello</h4>
+<p class="text-on-surface-variant">hello@lartisan.cafe<br/>+1 (212) 555-0198</p>
+</div>
+</div>
+</div>
+</div>
+<div class="reveal glass p-10 rounded-2xl border border-outline-variant">
+<form class="space-y-6">
+<div>
+<label class="block font-label-caps text-label-caps mb-2">FULL NAME</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-colors p-3 font-body-md" placeholder="Enter your name" type="text"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps mb-2">EMAIL ADDRESS</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-colors p-3 font-body-md" placeholder="your@email.com" type="email"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps mb-2">YOUR MESSAGE</label>
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-colors p-3 font-body-md resize-none" placeholder="How can we help?" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-full font-bold hover:opacity-90 transition-all uppercase tracking-widest text-sm" type="submit">Send Inquiry</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest py-20 border-t border-outline-variant/10">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-display-lg text-headline-sm text-primary italic">L'Artisan Café</span>
+<p class="text-secondary font-body-md text-sm">Crafted with Intent. © 2024</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6 sm:gap-12">
+<a class="text-secondary hover:text-primary transition-colors font-body-md underline underline-offset-4" href="#">The Roast</a>
+<a class="text-secondary hover:text-primary transition-colors font-body-md underline underline-offset-4" href="#">Wholesale</a>
+<a class="text-secondary hover:text-primary transition-colors font-body-md underline underline-offset-4" href="#">Privacy</a>
+</div>
+<div class="flex gap-6">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.063 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.063-2.633-.333-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.058 1.281-.072 1.689-.072 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Intersection Observer for reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let menuOpen = false;
+        function closeMenu() {
+            menuOpen = false;
+            mobileMenu.style.maxHeight = '0px';
+            menuToggle.textContent = 'menu';
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                menuToggle.textContent = 'close';
+                menuToggle.setAttribute('aria-expanded', 'true');
+            } else {
+                closeMenu();
+            }
+        });
+        mobileMenu.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', closeMenu);
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768 && menuOpen) closeMenu();
+        });
+
+        // Sticky header background shift on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.style.backgroundColor = 'rgba(252, 249, 248, 0.95)';
+            } else {
+                header.classList.remove('shadow-md');
+                header.style.backgroundColor = 'rgba(252, 249, 248, 0.7)';
+            }
+        });
+    </script>
+</body></html>
