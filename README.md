@@ -2,17 +2,12 @@
 
 A modern and elegant responsive landing page designed for a premium coffee shop.
 
-## 📸 Preview
-
-> Add a screenshot inside the `screenshots` folder and update the path below.
-
-![Preview](screenshots/preview.png)
 
 ---
 
 ## 🚀 Live Demo
 
-https://YOUR_USERNAME.github.io/artisan-cafe-landing-page/
+[https://YOUR_USERNAME.github.io/artisan-cafe-landing-page/](https://tarekattallah.github.io/artisan-cafe-landing-page/)
 
 ---
 
