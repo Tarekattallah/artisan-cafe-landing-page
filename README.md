@@ -72,36 +72,3 @@ Open
 ```text
 index.html
 ```
-
-in your browser.
-
----
-
-## 🌐 Deployment
-
-This project can be deployed using:
-
-- GitHub Pages
-- Netlify
-- Vercel
-
----
-
-## 👨‍💻 Author
-
-**Tarek Attallah**
-
-GitHub:
-https://github.com/YOUR_USERNAME
-
-LinkedIn:
-https://linkedin.com/in/YOUR_LINKEDIN
-
-Portfolio:
-https://YOUR_PORTFOLIO
-
----
-
-## ⭐ Support
-
-If you like this project, don't forget to give it a ⭐ on GitHub.
